@@ -1,16 +1,5 @@
-import { ApolloServer, gql } from "apollo-server";
 import "dotenv/config";
-
-const typeDefs = gql`
-  type jwt {
-    jwt: String
-  }
-  type Query {
-    jwt: jwt
-  }
-`;
-
-const server = new ApolloServer({ typeDefs });
+import { server } from "./server/server";
 
 server.listen({ port: process.env.PORT }).then(({ url }) => {
   console.log(`Server ready at ${url}`);
