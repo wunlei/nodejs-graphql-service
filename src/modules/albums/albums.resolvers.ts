@@ -34,6 +34,14 @@ const resolversAlbums = {
   },
   Album: {
     id: (parent: Album) => parent._id,
+    artists: (parent: Album) => {
+      if (parent.artistsIds) {
+        const artists = parent.artistsIds.map((bandId) =>
+          dataSources.ArtistService.findOne(bandId)
+        );
+        return artists;
+      }
+    },
   },
 };
 
