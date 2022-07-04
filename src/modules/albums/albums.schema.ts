@@ -16,7 +16,7 @@ const typeDefsAlbums = gql`
     name: String!
     released: Int
     artistsIds: [String!]
-    tracksIds: [String!]
+    trackIds: [String!]
     genresIds: [String!]
     bandsIds: [String!]
     image: String
@@ -27,7 +27,7 @@ const typeDefsAlbums = gql`
     name: String
     released: Int
     artistsIds: [String!]
-    tracksIds: [String!]
+    trackIds: [String!]
     genresIds: [String!]
     bandsIds: [String!]
     image: String
@@ -38,7 +38,7 @@ const typeDefsAlbums = gql`
     name: String
     released: Int
     artistsIds: [String!]
-    tracksIds: [String!]
+    trackIds: [String!]
     genresIds: [String!]
     bandsIds: [String!]
     image: String
