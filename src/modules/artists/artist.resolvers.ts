@@ -34,6 +34,12 @@ const resolversArtists = {
   },
   Artist: {
     id: (parent: Artist) => parent._id,
+    bands: (parent: Artist) => {
+      const bands = parent.bandsIds.map((bandId) =>
+        dataSources.BandsService.findOne(bandId)
+      );
+      return bands;
+    },
   },
 };
 

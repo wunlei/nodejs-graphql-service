@@ -42,6 +42,22 @@ const resolversAlbums = {
         return artists;
       }
     },
+    bands: (parent: Album) => {
+      if (parent.bandsIds) {
+        const bands = parent.bandsIds.map((bandId) =>
+          dataSources.BandsService.findOne(bandId)
+        );
+        return bands;
+      }
+    },
+    genres: (parent: Album) => {
+      if (parent.genresIds) {
+        const genres = parent.genresIds.map((bandId) =>
+          dataSources.GenresService.findOne(bandId)
+        );
+        return genres;
+      }
+    },
   },
 };
 

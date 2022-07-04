@@ -34,6 +34,12 @@ const resolversBands = {
   },
   Band: {
     id: (parent: Band) => parent._id,
+    genres: (parent: Band) => {
+      const genres = parent.genresIds.map((genreId) =>
+        dataSources.GenresService.findOne(genreId)
+      );
+      return genres;
+    },
     members: (parent: Band) => {
       const members = parent.members.map(async (member) => {
         const artist = await dataSources.ArtistService.findOne(member.artist);
