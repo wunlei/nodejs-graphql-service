@@ -34,6 +34,10 @@ const resolversTracks = {
   },
   Track: {
     id: (parent: Track) => parent._id,
+    album: (parent: Track) => {
+      const album = dataSources.AlbumService.findOne(parent.albumId);
+      return album;
+    },
     bands: (parent: Track) => {
       const bands = parent.bandsIds.map((bandId) =>
         dataSources.BandsService.findOne(bandId)

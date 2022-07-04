@@ -42,6 +42,14 @@ const resolversAlbums = {
         return artists;
       }
     },
+    tracks: (parent: Album) => {
+      if (parent.trackIds) {
+        const tracks = parent.trackIds.map((trackId) =>
+          dataSources.TracksService.findOne(trackId)
+        );
+        return tracks;
+      }
+    },
     bands: (parent: Album) => {
       if (parent.bandsIds) {
         const bands = parent.bandsIds.map((bandId) =>
