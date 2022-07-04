@@ -1,3 +1,4 @@
+import { UserInputError } from "apollo-server";
 import { dataSources } from "../../server/server";
 import { Favorite, FavoriteInput } from "./favorites.types";
 
@@ -9,6 +10,10 @@ const resolversFavorites = {
   },
   Mutation: {
     addTrackToFavourites: (parent: undefined, args: { id: string }) => {
+      if (!args.id.match(/^[0-9a-fA-F]{24}$/)) {
+        throw new UserInputError("Invalid argument value: id");
+      }
+
       const data: FavoriteInput = {
         id: args.id,
         type: "tracks",
@@ -16,6 +21,9 @@ const resolversFavorites = {
       return dataSources.FavouritesService.createOne(data);
     },
     addBandToFavourites: (parent: undefined, args: { id: string }) => {
+      if (!args.id.match(/^[0-9a-fA-F]{24}$/)) {
+        throw new UserInputError("Invalid argument value: id");
+      }
       const data: FavoriteInput = {
         id: args.id,
         type: "bands",
@@ -23,6 +31,9 @@ const resolversFavorites = {
       return dataSources.FavouritesService.createOne(data);
     },
     addArtistToFavourites: (parent: undefined, args: { id: string }) => {
+      if (!args.id.match(/^[0-9a-fA-F]{24}$/)) {
+        throw new UserInputError("Invalid argument value: id");
+      }
       const data: FavoriteInput = {
         id: args.id,
         type: "artists",
@@ -30,6 +41,9 @@ const resolversFavorites = {
       return dataSources.FavouritesService.createOne(data);
     },
     addGenreToFavourites: (parent: undefined, args: { id: string }) => {
+      if (!args.id.match(/^[0-9a-fA-F]{24}$/)) {
+        throw new UserInputError("Invalid argument value: id");
+      }
       const data: FavoriteInput = {
         id: args.id,
         type: "genres",
